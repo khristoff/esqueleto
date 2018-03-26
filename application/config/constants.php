@@ -93,6 +93,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 |
 */
 // Domains
+define('LENGUAJE', 'es');
 define('NOMBRE', 'Proyecto');
 define('PROTOCOLO', 'http://');
 define('DOMINIO', 'dominio.com');

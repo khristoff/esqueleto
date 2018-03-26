@@ -9,56 +9,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<nav role="navigation">
 				<ul class="nav">
 					<li>
-						<a href="/"><i class="icon-compass"></i><span>Escritorio</span></a>
+						<a href="/theme"><i class="icon-compass"></i><span>Escritorio</span></a>
 					</li>
 					<li>
 						<a href="javascript:void(0);"><span class="badge pull-right">4</span><i class="icon-drop"></i><span>Tarjetas</span></a>
 						<ul class="sub-menu">
-							<li><a href="/theme/cards-basic"><span>Basic</span></a></li>
-							<li><a href="/theme/cards-portlets"><span>Portlets</span></a></li>
-							<li><a href="/theme/cards-draggable"><span>Draggable</span></a></li>
-							<li><a href="/theme/cards-widgets"><span>Widgets</span></a></li>
+							<li><a href="/theme/cardsbasic"><span>Basic</span></a></li>
+							<li><a href="/theme/cardsportlets"><span>Portlets</span></a></li>
+							<li><a href="/theme/cardsdraggable"><span>Draggable</span></a></li>
+							<li><a href="/theme/cardswidgets"><span>Widgets</span></a></li>
 						</ul>
 					</li>
 					<li>
 						<a href="javascript:void(0);"><i class="icon-cursor"></i><span>Apps</span></a>
 						<ul class="sub-menu">
-							<li><a href="/theme/apps-calendar"><span>Calendario</span></a></li>
-							<li><a href="/theme/apps-gallery"><span>Galería</span></a></li>
-							<li><a href="/theme/apps-messages"><span>Mensajes</span></a></li>
-							<li><a href="/theme/apps-social"><span>Social</span></a></li>
-							<li><a href="/theme/apps-projects"><span>Proyectos</span></a></li>
-							<li><a href="/theme/apps-contacts"><span>Contactos</span></a></li>
-							<li><a href="/theme/apps-travel"><span>Viajes</span></a></li>
+							<li><a href="/theme/appscalendar"><span>Calendario</span></a></li>
+							<li><a href="/theme/appsgallery"><span>Galería</span></a></li>
+							<li><a href="/theme/appsmessages"><span>Mensajes</span></a></li>
+							<li><a href="/theme/appssocial"><span>Social</span></a></li>
+							<li><a href="/theme/appsprojects"><span>Proyectos</span></a></li>
+							<li><a href="/theme/appscontacts"><span>Contactos</span></a></li>
+							<li><a href="/theme/appstravel"><span>Viajes</span></a></li>
 						</ul>
 					</li>
 					<li>
 						<a href="javascript:void(0);"><i class="icon-bag"></i><span>Comercial</span></a>
 						<ul class="sub-menu">
-							<li><a href="/theme/commerce-products"><span>Productos</span></a></li>
-							<li><a href="/theme/commerce-cart"><span>Cart</span></a></li>
+							<li><a href="/theme/commerceproducts"><span>Productos</span></a></li>
+							<li><a href="/theme/commercecart"><span>Cart</span></a></li>
 						</ul>
 					</li>
 					<li>
 						<a href="javascript:void(0);"><i class="icon-book-open"></i><span>Elementos</span></a>
 						<ul class="sub-menu">
-							<li><a href="/theme/ui-buttons.html"><span>Buttons</span></a></li>
-							<li><a href="/theme/ui-social-buttons.html"><span>Social buttons</span></a></li>
-							<li><a href="/theme/ui-general.html"><span>General</span></a></li>
-							<li><a href="/theme/ui-tabs.html"><span>Tabs</span></a></li>
-							<li><a href="/theme/ui-progressbars.html"><span>Progress bars</span></a></li>
-							<li><a href="/theme/ui-pagination.html"><span>Pagination</span></a></li>
-							<li><a href="/theme/ui-sliders.html"><span>Sliders</span></a></li>
-							<li><a href="/theme/ui-notifications.html"><span>Notifications</span></a></li>
-							<li><a href="/theme/ui-spinners.html"><span>Spinners</span></a></li>
-							<li><a href="/theme/ui-colors.html"><span>Colors</span></a></li>
-							<li><a href="/theme/ui-alerts.html"><span>Alerts</span></a></li>
+							<li><a href="/theme/uibuttons.html"><span>Buttons</span></a></li>
+							<li><a href="/theme/uisocialbuttons.html"><span>Social buttons</span></a></li>
+							<li><a href="/theme/uigeneral.html"><span>General</span></a></li>
+							<li><a href="/theme/uitabs.html"><span>Tabs</span></a></li>
+							<li><a href="/theme/uiprogressbars.html"><span>Progress bars</span></a></li>
+							<li><a href="/theme/uipagination.html"><span>Pagination</span></a></li>
+							<li><a href="/theme/uisliders.html"><span>Sliders</span></a></li>
+							<li><a href="/theme/uinotifications.html"><span>Notifications</span></a></li>
+							<li><a href="/theme/uispinners.html"><span>Spinners</span></a></li>
+							<li><a href="/theme/uicolors.html"><span>Colors</span></a></li>
+							<li><a href="/theme/uialerts.html"><span>Alerts</span></a></li>
 							<li>
 								<a href="javascript:void(0);"><i class="toggle-accordion"></i><span>Iconos</span></a>
 								<ul class="sub-menu">
-									<li><a href="/theme/ui-icons-sli.html"><span>SLI</span></a></li>
-									<li><a href="/theme/ui-icons-fontawesome.html"><span>Fontawesome</span></a></li>
-									<li><a href="/theme/ui-icons-climacons.html"><span>Climacons</span></a></li>
+									<li><a href="/theme/uiiconssli.html"><span>SLI</span></a></li>
+									<li><a href="/theme/uiiconsfontawesome.html"><span>Fontawesome</span></a></li>
+									<li><a href="/theme/uiiconsclimacons.html"><span>Climacons</span></a></li>
 								</ul>
 							</li>
 						</ul>
@@ -66,60 +66,60 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<li>
 						<a href="javascript:void(0);"><i class="icon-loop"></i><span>Formularios</span></a>
 						<ul class="sub-menu">
-							<li><a href="/theme/forms-basic.html"><span>Basic</span></a></li>
-							<li><a href="/theme/forms-custom.html"><span>Custom</span></a></li>
-							<li><a href="/theme/forms-plugins.html"><span>Plugins</span></a></li>
-							<li><a href="/theme/forms-wizard.html"><span>Wizard</span></a></li>
-							<li><a href="/theme/forms-editors.html"><span>Editors</span></a></li>
-							<li><a href="/theme/forms-validation.html"><span>Validation</span></a></li>
-							<li><a href="/theme/forms-masks.html"><span>Masks</span></a></li>
-							<li><a href="/theme/forms-upload.html"><span>Upload</span></a></li>
+							<li><a href="/theme/formsbasic.html"><span>Basic</span></a></li>
+							<li><a href="/theme/formscustom.html"><span>Custom</span></a></li>
+							<li><a href="/theme/formsplugins.html"><span>Plugins</span></a></li>
+							<li><a href="/theme/formswizard.html"><span>Wizard</span></a></li>
+							<li><a href="/theme/formseditors.html"><span>Editors</span></a></li>
+							<li><a href="/theme/formsvalidation.html"><span>Validation</span></a></li>
+							<li><a href="/theme/formsmasks.html"><span>Masks</span></a></li>
+							<li><a href="/theme/formsupload.html"><span>Upload</span></a></li>
 						</ul>
 					</li>
 					<li>
 						<a href="javascript:void(0);"><i class="icon-share-alt"></i><span>Tablas</span></a>
 						<ul class="sub-menu">
-							<li><a href="/theme/tables-basic.html"><span>Basic</span></a></li>
-							<li><a href="/theme/tables-responsive.html"><span>Responsive</span></a></li>
-							<li><a href="/theme/tables-datatables.html"><span>Datatables</span></a></li>
-							<li><a href="/theme/tables-editable.html"><span>Editable</span></a></li>
+							<li><a href="/theme/tablesbasic.html"><span>Basic</span></a></li>
+							<li><a href="/theme/tablesresponsive.html"><span>Responsive</span></a></li>
+							<li><a href="/theme/tablesdatatables.html"><span>Datatables</span></a></li>
+							<li><a href="/theme/tableseditable.html"><span>Editable</span></a></li>
 						</ul>
 					</li>
 					<li>
 						<a href="javascript:void(0);"><i class="icon-pie-chart"></i><span>Gráficas</span></a>
 						<ul class="sub-menu">
-							<li><a href="/theme/charts-flot.html"><span>Flot</span></a></li>
-							<li><a href="/theme/charts-easypie.html"><span>Easypie</span></a></li>
-							<li><a href="/theme/charts-chartjs.html"><span>Chartjs</span></a></li>
-							<li><a href="/theme/charts-rickshaw.html"><span>Rickshaw</span></a></li>
-							<li><a href="/theme/charts-nvd3.html"><span>nvd3</span></a></li>
-							<li><a href="/theme/charts-c3js.html"><span>C3js</span></a></li>
+							<li><a href="/theme/chartsflot.html"><span>Flot</span></a></li>
+							<li><a href="/theme/chartseasypie.html"><span>Easypie</span></a></li>
+							<li><a href="/theme/chartschartjs.html"><span>Chartjs</span></a></li>
+							<li><a href="/theme/chartsrickshaw.html"><span>Rickshaw</span></a></li>
+							<li><a href="/theme/chartsnvd3.html"><span>nvd3</span></a></li>
+							<li><a href="/theme/chartsc3js.html"><span>C3js</span></a></li>
 						</ul>
 					</li>
 					<li>
 						<a href="javascript:void(0);"><i class="icon-pointer"></i><span>Mapas</span></a>
 						<ul class="sub-menu">
-							<li><a href="/theme/maps-google.html"><span>Google</span></a></li>
-							<li><a href="/theme/maps-vector.html"><span>Vector</span></a></li>
+							<li><a href="/theme/mapsgoogle.html"><span>Google</span></a></li>
+							<li><a href="/theme/mapsvector.html"><span>Vector</span></a></li>
 						</ul>
 					</li>
 					<li>
 						<a href="javascript:void(0);"><i class="icon-tag"></i><span>Extras</span></a>
 						<ul class="sub-menu">
-							<li><a href="/theme/extras-invoice.html"><span>Invoice</span></a></li>
-							<li><a href="/theme/extras-timeline.html"><span>Timeline</span></a></li>
-							<li><a href="/theme/extras-timeline-stacked.html"><span>Stacked timeline</span></a></li>
-							<li><a href="/theme/extras-post.html"><span>Post</span></a></li>
-							<li><a href="/theme/extras-sortable.html"><span>Sortable</span></a></li>
-							<li><a href="/theme/extras-nestable.html"><span>Nestable</span></a></li>
-							<li><a href="/theme/extras-signin.html"><span>Signin</span></a></li>
-							<li><a href="/theme/extras-signin2.html"><span>Signin v2</span></a></li>
-							<li><a href="/theme/extras-signup.html"><span>Signup</span></a></li>
-							<li><a href="/theme/extras-signup2.html"><span>Signup v2</span></a></li>
-							<li><a href="/theme/extras-forgot.html"><span>Forgot</span></a></li>
-							<li><a href="/theme/extras-lockscreen.html"><span>Lockscreen</span></a></li>
-							<li><a href="/theme/extras-404.html"><span>404 page</span></a></li>
-							<li><a href="/theme/extras-500.html"><span>500 page</span></a></li>
+							<li><a href="/theme/extrasinvoice.html"><span>Invoice</span></a></li>
+							<li><a href="/theme/extrastimeline.html"><span>Timeline</span></a></li>
+							<li><a href="/theme/extrastimeline-stacked.html"><span>Stacked timeline</span></a></li>
+							<li><a href="/theme/extraspost.html"><span>Post</span></a></li>
+							<li><a href="/theme/extrassortable.html"><span>Sortable</span></a></li>
+							<li><a href="/theme/extrasnestable.html"><span>Nestable</span></a></li>
+							<li><a href="/theme/extrassignin.html"><span>Signin</span></a></li>
+							<li><a href="/theme/extrassignin2.html"><span>Signin v2</span></a></li>
+							<li><a href="/theme/extrassignup.html"><span>Signup</span></a></li>
+							<li><a href="/theme/extrassignup2.html"><span>Signup v2</span></a></li>
+							<li><a href="/theme/extrasforgot.html"><span>Forgot</span></a></li>
+							<li><a href="/theme/extraslockscreen.html"><span>Lockscreen</span></a></li>
+							<li><a href="/theme/extras404.html"><span>404 page</span></a></li>
+							<li><a href="/theme/extras500.html"><span>500 page</span></a></li>
 							<li><a href="/theme/blank.html"><span>Starter</span></a></li>
 						</ul>
 					</li>
@@ -314,4 +314,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</li>
 				</ul>
 			</div>
-			<div class="main-content">
+			<div class="main-content <?=$class?>">

@@ -8,7 +8,7 @@
     longitude = -78.670,
     map_zoom = 6,
     is_internetExplorer11 = navigator.userAgent.toLowerCase().indexOf('trident') > -1,
-    marker_url = (is_internetExplorer11) ? 'images/cd-icon-location.png' : 'images/cd-icon-location.svg';
+    marker_url = (is_internetExplorer11) ? '/assets/images/cd-icon-location.png' : '/assets/images/cd-icon-location.svg';
 
   var map_options = {
     scrollwheel: false,
