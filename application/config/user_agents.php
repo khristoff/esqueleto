@@ -1,15 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/*
-| -------------------------------------------------------------------
-| USER AGENT TYPES
-| -------------------------------------------------------------------
-| This file contains four arrays of user agent data. It is used by the
-| User Agent Class to help identify browser, platform, robot, and
-| mobile device data. The array keys are used to identify the device
-| and the array values are used to set the actual name of the item.
-*/
 $platforms = array(
 	'windows nt 10.0'	=> 'Windows 10',
 	'windows nt 6.3'	=> 'Windows 8.1',
@@ -55,9 +46,6 @@ $platforms = array(
 	'symbian' 			=> 'Symbian OS'
 );
 
-
-// The order of this array should NOT be changed. Many browsers return
-// multiple browser types so we want to identify the sub-type first.
 $browsers = array(
 	'OPR'			=> 'Opera',
 	'Flock'			=> 'Flock',
@@ -190,7 +178,6 @@ $mobiles = array(
 	'cellphone'		=> 'Generic Mobile'
 );
 
-// There are hundreds of bots but these are the most common.
 $robots = array(
 	'googlebot'		=> 'Googlebot',
 	'msnbot'		=> 'MSNBot',

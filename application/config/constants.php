@@ -1,44 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/*
-|--------------------------------------------------------------------------
-| Display Debug backtrace
-|--------------------------------------------------------------------------
-|
-| If set to TRUE, a backtrace will be displayed along with php errors. If
-| error_reporting is disabled, the backtrace will not display, regardless
-| of this setting
-|
-*/
 defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 
-/*
-|--------------------------------------------------------------------------
-| File and Directory Modes
-|--------------------------------------------------------------------------
-|
-| These prefs are used when checking and setting modes when working
-| with the file system.  The defaults are fine on servers with proper
-| security, but you may wish (or even need) to change the values in
-| certain environments (Apache running a separate process for each
-| user, PHP under CGI with Apache suEXEC, etc.).  Octal values should
-| always be used to set the mode correctly.
-|
-*/
 defined('FILE_READ_MODE')  OR define('FILE_READ_MODE', 0644);
 defined('FILE_WRITE_MODE') OR define('FILE_WRITE_MODE', 0666);
 defined('DIR_READ_MODE')   OR define('DIR_READ_MODE', 0755);
 defined('DIR_WRITE_MODE')  OR define('DIR_WRITE_MODE', 0755);
 
-/*
-|--------------------------------------------------------------------------
-| File Stream Modes
-|--------------------------------------------------------------------------
-|
-| These modes are used when working with fopen()/popen()
-|
-*/
 defined('FOPEN_READ')                           OR define('FOPEN_READ', 'rb');
 defined('FOPEN_READ_WRITE')                     OR define('FOPEN_READ_WRITE', 'r+b');
 defined('FOPEN_WRITE_CREATE_DESTRUCTIVE')       OR define('FOPEN_WRITE_CREATE_DESTRUCTIVE', 'wb'); // truncates existing file data, use with care
@@ -48,31 +17,6 @@ defined('FOPEN_READ_WRITE_CREATE')              OR define('FOPEN_READ_WRITE_CREA
 defined('FOPEN_WRITE_CREATE_STRICT')            OR define('FOPEN_WRITE_CREATE_STRICT', 'xb');
 defined('FOPEN_READ_WRITE_CREATE_STRICT')       OR define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
 
-/*
-|--------------------------------------------------------------------------
-| Exit Status Codes
-|--------------------------------------------------------------------------
-|
-| Used to indicate the conditions under which the script is exit()ing.
-| While there is no universal standard for error codes, there are some
-| broad conventions.  Three such conventions are mentioned below, for
-| those who wish to make use of them.  The CodeIgniter defaults were
-| chosen for the least overlap with these conventions, while still
-| leaving room for others to be defined in future versions and user
-| applications.
-|
-| The three main conventions used for determining exit status codes
-| are as follows:
-|
-|    Standard C/C++ Library (stdlibc):
-|       http://www.gnu.org/software/libc/manual/html_node/Exit-Status.html
-|       (This link also contains other GNU-specific conventions)
-|    BSD sysexits.h:
-|       http://www.gsp.com/cgi-bin/man.cgi?section=3&topic=sysexits
-|    Bash scripting:
-|       http://tldp.org/LDP/abs/html/exitcodes.html
-|
-*/
 defined('EXIT_SUCCESS')        OR define('EXIT_SUCCESS', 0); // no errors
 defined('EXIT_ERROR')          OR define('EXIT_ERROR', 1); // generic error
 defined('EXIT_CONFIG')         OR define('EXIT_CONFIG', 3); // configuration error
@@ -84,35 +28,50 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-/*
-|--------------------------------------------------------------------------
-| Custom constants project
-|--------------------------------------------------------------------------
-|
-| These are the custom constants ONLY for this project
-|
-*/
-// Domains
-define('LENGUAJE', 'es');
-define('NOMBRE', 'Proyecto');
-define('PROTOCOLO', 'http://');
-define('DOMINIO', 'dominio.com');
-define('ROOT', PROTOCOLO.DOMINIO);
-define('LOGO', null);
-define('ESLOGAN', null);
-define('DESCRIPCION', null);
-define('ETIQUETAS', null);
-// Pagination
-define('ITEMSPORPAGINA', null);
-// Contact
-define('DIRECCION', null);
-define('CORREO', null);
-define('TELEFONO', null);
-define('FACEBOOK', null);
-define('GOOGLE', null);
-define('INSTAGRAM', null);
-define('LINKEDIN', null);
-define('TWITTER', null);
-define('YOUTUBE', null);
-// Security
-define('SEMILLA', null);
+
+defined('LENGUAJE')		OR define('LENGUAJE', 'es');
+defined('NOMBRE')		OR define('NOMBRE', 'Proyecto');
+defined('PROTOCOLO')	OR define('PROTOCOLO', 'http://');
+defined('DOMINIO')		OR define('DOMINIO', 'khristoff.local:5757');
+defined('ROOT')			OR define('ROOT', PROTOCOLO.DOMINIO);
+defined('LOGO')			OR define('LOGO', false);
+defined('ESLOGAN')      OR define('ESLOGAN', false);
+defined('DESCRIPCION')	OR define('DESCRIPCION', false);
+defined('ETIQUETAS')	OR define('ETIQUETAS', false);
+defined('USUARIO')		OR define('USUARIO', '/assets/images/default/profile.png');
+
+defined('LOGIN')		OR define('LOGIN', ROOT.'/panel/login');
+defined('WELCOME')		OR define('WELCOME', '/panel');
+defined('PANEL')		OR define('PANEL', '/panel');
+
+defined('BUSQUEDA')		OR define('BUSQUEDA', true);
+defined('RECUPERAR')	OR define('RECUPERAR', true);
+defined('REGISTRO')		OR define('REGISTRO', true);
+
+defined('ITEMSPORPAGINA') OR define('ITEMSPORPAGINA', false);
+
+defined('GOOGLE')		OR define('GOOGLE', false);
+defined('HISTATS')		OR define('HISTATS', false);
+defined('ANALYTICS')	OR define('ANALYTICS', false);
+defined('VERIFICATION')	OR define('VERIFICATION', false);
+defined('MAPS')			OR define('MAPS', 'AIzaSyAoRNaIu7LtdMg6z2k8fwTTeQwwtK0MRYU');
+
+defined('COORDENADAS')	OR define('COORDENADAS', false);
+defined('CORREO')		OR define('CORREO', false);
+defined('DIRECCION')	OR define('DIRECCION', false);
+defined('TELEFONO')		OR define('TELEFONO', false);
+
+defined('FACEBOOK')		OR define('FACEBOOK', false);
+defined('FLICKR')		OR define('FLICKR', false);
+defined('GOOGLEPLUS')	OR define('GOOGLEPLUS', false);
+defined('INSTAGRAM')	OR define('INSTAGRAM', false);
+defined('LINKEDIN')		OR define('LINKEDIN', false);
+defined('PINTEREST')	OR define('PINTEREST', false);
+defined('RSS')			OR define('RSS', false);
+defined('SKYPE')		OR define('SKYPE', false);
+defined('SNAPCHAT')		OR define('SNAPCHAT', false);
+defined('TWITTER')		OR define('TWITTER', false);
+defined('WHATSAPP')		OR define('WHATSAPP', false);
+defined('YOUTUBE')		OR define('YOUTUBE', false);
+
+defined('SEMILLA')		OR define('SEMILLA', '3tr87TbtycUYQWvfcgd/%412+àjh()*â');

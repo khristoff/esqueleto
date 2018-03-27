@@ -71,8 +71,8 @@ if(!function_exists('digits_valid')){
 	}
 }
 
-if(!function_exists('email_valid')){
-	function email_valid($email){
+if(!function_exists('correo')){
+	function correo($email){
 		return (filter_var($email, FILTER_VALIDATE_EMAIL)) ? true : false;
 	}
 }
@@ -381,8 +381,8 @@ if(!function_exists('mysql_nulo')){
 	}
 }
 
-if(!function_exists('object_to_array')){
-	function object_to_array($object){
+if(!function_exists('objeto_a_arreglo')){
+	function objeto_a_arreglo($object){
 		if (is_object($object)) {
 	        $object = get_object_vars($object);
 	    }
@@ -394,18 +394,18 @@ if(!function_exists('object_to_array')){
 	}
 }
 
-if(!function_exists('password_encrypt')){
-	function password_encrypt($password, $hash = 'sha512'){
+if(!function_exists('encriptar')){
+	function encriptar($password, $hash = 'sha512'){
 		return do_hash(SEMILLA.$password, $hash);
 	}
 }
 
-if(!function_exists('password_valid')){
+if(!function_exists('validar_contrasena')){
 	/*
 	Contraseña de al menos 8 caracteres, al menos 1 letra minúscula, al menos 1
 	letra mayúscula y al menos 1 número
 	*/
-	function password_valid($password){
+	function validar_contrasena($password){
 		return (preg_match('/[^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$]/', $password)) ? true : false;
 	}
 }
@@ -465,8 +465,8 @@ if(!function_exists('text_null')){
 	}
 }
 
-if(!function_exists('text_sweep')){
-	function text_sweep($text){
+if(!function_exists('limpiar')){
+	function limpiar($text){
 		$text = strip_tags($text);
 		$text = htmlspecialchars($text, ENT_QUOTES);
 		$text = trim($text);
@@ -492,5 +492,11 @@ if(!function_exists('url_valid')){
 		$url = preg_replace('[\n|\r|\n\r]', '', $url);
 		$url = preg_replace('/[^a-z0-9\-_]/', '', $url);
 		return mb_convert_encoding($url, 'UTF-8');
+	}
+}
+
+if(!function_exists('perfil_foto')){
+	function perfil_foto($file){
+		return (file_exists(getcwd().$file)) ? $file : USUARIO;
 	}
 }
