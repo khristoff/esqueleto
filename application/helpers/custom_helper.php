@@ -466,13 +466,13 @@ if(!function_exists('text_null')){
 }
 
 if(!function_exists('limpiar')){
-	function limpiar($text){
-		$text = strip_tags($text);
-		$text = htmlspecialchars($text, ENT_QUOTES);
-		$text = trim($text);
-		$text = preg_replace('[\n|\r|\n\r]', '', $text);
-		$text = preg_replace('/[^A-Za-z0-9áéíóúñÁÉÍÓÚÑ\-¿!¡;,:\.\?*=+#@()_ ]/', '', $text);
-		return mb_convert_encoding($text, 'UTF-8');
+	function limpiar($texto){
+		$texto = strip_tags($texto);
+		$texto = htmlspecialchars($texto, ENT_QUOTES);
+		$texto = trim($texto);
+		$texto = preg_replace('[\n|\r|\n\r]', '', $texto);
+		$texto = preg_replace('/[^A-Za-z0-9áéíóúñÁÉÍÓÚÑ\-¿!¡;,:\.\?*=+#@()_ ]/', '', $texto);
+		return mb_convert_encoding($texto, 'UTF-8');
 	}
 }
 
@@ -496,7 +496,7 @@ if(!function_exists('url_valid')){
 }
 
 if(!function_exists('perfil_foto')){
-	function perfil_foto($file){
-		return (file_exists(getcwd().$file)) ? $file : USUARIO;
+	function perfil_foto($foto){
+		return (file_exists(getcwd().$foto)) ? $foto : USUARIO;
 	}
 }

@@ -10,3 +10,5 @@ $route['panel/auth']		= 'sesion/login';
 $route['panel/registro']	= 'sesion/registro';
 $route['panel/recuperar']	= 'sesion/recuperar';
 $route['panel/salir']		= 'sesion/salir';
+
+$route['sitemap\.xml']		= 'seo/sitemap';

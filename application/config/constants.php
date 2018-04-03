@@ -39,6 +39,7 @@ defined('ESLOGAN')      OR define('ESLOGAN', false);
 defined('DESCRIPCION')	OR define('DESCRIPCION', false);
 defined('ETIQUETAS')	OR define('ETIQUETAS', false);
 defined('USUARIO')		OR define('USUARIO', '/assets/images/default/profile.png');
+defined('COPYRIGHT')	OR define('COPYRIGHT', 'Montealegre Digital Marketing');
 
 defined('LOGIN')		OR define('LOGIN', ROOT.'/panel/login');
 defined('WELCOME')		OR define('WELCOME', '/panel');
