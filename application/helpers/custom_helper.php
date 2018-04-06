@@ -1,472 +1,317 @@
 <?php
+/**
+* Helpers personalizados para CodeIgniter
+*
+* @package    Custom Helper
+* @author     @khristoff
+* @version    1.0
+* @lastmod    2018-04-06
+*
+*/
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-if(!function_exists('acentos')){
-	function acentos($text){
-		$text = mb_strtolower($text, 'UTF-8');
-		$text = htmlentities($text, ENT_QUOTES, 'UTF-8');
-		$patron = array (
-			'/&agrave;/' => 'a',
-			'/&egrave;/' => 'e',
-			'/&igrave;/' => 'i',
-			'/&ograve;/' => 'o',
-			'/&ugrave;/' => 'u',
-			'/&aacute;/' => 'a',
-			'/&eacute;/' => 'e',
-			'/&iacute;/' => 'i',
-			'/&oacute;/' => 'o',
-			'/&uacute;/' => 'u',
-			'/&acirc;/' => 'a',
-			'/&ecirc;/' => 'e',
-			'/&icirc;/' => 'i',
-			'/&ocirc;/' => 'o',
-			'/&ucirc;/' => 'u',
-			'/&atilde;/' => 'a',
-			'/&etilde;/' => 'e',
-			'/&itilde;/' => 'i',
-			'/&otilde;/' => 'o',
-			'/&utilde;/' => 'u',
-			'/&auml;/' => 'a',
-			'/&euml;/' => 'e',
-			'/&iuml;/' => 'i',
-			'/&ouml;/' => 'o',
-			'/&uuml;/' => 'u',
-			'/&auml;/' => 'a',
-			'/&euml;/' => 'e',
-			'/&iuml;/' => 'i',
-			'/&ouml;/' => 'o',
-			'/&uuml;/' => 'u',
-			'/&aring;/' => 'a',
-			'/&ntilde;/' => 'n',
-			'/&ldquo/' => '',
-			'/&rdquo/' => '',
-			'/&lsquo/' => '',
-			'/&rsquo/' => '',
-			'/&iquest/' => '',
-			'/&iexcl/' => ''
-		);
-		$text = preg_replace(array_keys($patron), array_values($patron), $text);
-		$text = preg_replace('/[¿!¡;,:\.\?*=+#@%()"]/', '', trim($text));
-		return $text;
+/**
+ *
+ * Comprueba si un checkbox tiene estatus "checked" en sus propiedades
+ *
+ * @param		valor:String
+ * @return      Devuelve 1 si el checkbox está activado, en su defecto nulo:Null
+ *
+ */
+if(!function_exists('checkbox_valor')){
+	function checkbox_valor($valor){
+		return ($valor == 'on') ? 1 : null;
 	}
 }
 
-if(!function_exists('checkbox')){
-	function checkbox($value){
-		return ($value == 'on') ? 1 : null;
+/**
+ *
+ * Concatena la semilla con la contraseña y los encripta en base al algoritmo
+ * proporcionado (sha512 por defecto); la semilla se encuentra en las constantes
+ * globales de CI
+ *
+ * @param		contrasena:String, hash?:Enum
+ * @return      Devuelve la contraseña:String encriptada
+ *
+ */
+if(!function_exists('contrasena_encriptar')){
+	function contrasena_encriptar($contrasena, $hash = 'sha512'){
+		return do_hash(SEMILLA.$contrasena, $hash);
 	}
 }
 
-if(!function_exists('dir_mkdir')){
-	function dir_mkdir($path){
-		if(!file_exists($path)) mkdir($path, 0777, true);
-		chmod($path, 0777);
+/**
+ *
+ * Valida que la contraseña proporcionada contenga al menos 8 caracteres, al
+ * menos 1 letra minúscula, al menos 1 letra mayúscula y al menos 1 número
+ *
+ * @param		contrasena:String
+ * @return      Si la contraseña cumple con los requisitos devuelve true:Bool
+ *
+ */
+if(!function_exists('contrasena_validar')){
+	function contrasena_validar($contrasena){
+		return (preg_match('/[^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$]/', $contrasena)) ? true : false;
+	}
+}
+
+/**
+ *
+ * Verifica que el correo sea un formato de correo electrónico válido
+ *
+ * @param		correo:String
+ * @return      Si el correo es formato válido true:Bool, si no false:Bool
+ *
+ */
+if(!function_exists('correo_valido')){
+	function correo_valido($correo){
+		return (filter_var($correo, FILTER_VALIDATE_EMAIL)) ? true : false;
+	}
+}
+
+/**
+ *
+ * Crea una carpeta en la ruta especificada y otorga los permisos indicados
+ *
+ * @param		ruta:Path, permisos?:Chmod
+ * @return      Si la carpeta se creó devuelve true:Bool
+ *
+ */
+if(!function_exists('directorio_crear')){
+	function directorio_crear($ruta, $permisos = 0777){
+		if(!file_exists($ruta)) mkdir($ruta, $permisos, true);
+		chmod($ruta, $permisos);
 		return true;
 	}
 }
 
-if(!function_exists('digits_valid')){
-	function digits_valid($number){
-		return preg_replace('/\D+/', '', $number);
+/**
+ *
+ * Limpia una cadena y devuelve únicamente dígitos
+ *
+ * @param		numero:String
+ * @return      Devuelve solo dígitos:Integer
+ *
+ */
+if(!function_exists('digitos_validos')){
+	function digitos_validos($numero){
+		return preg_replace('/\D+/', '', $numero);
 	}
 }
 
-if(!function_exists('correo')){
-	function correo($email){
-		return (filter_var($email, FILTER_VALIDATE_EMAIL)) ? true : false;
-	}
-}
-
-if(!function_exists('image_remote')){
-	function image_remote($url){
+/**
+ *
+ * Valida que un archivo sea una imagen válida (png, jpg, gif) en base a su ruta
+ *
+ * @param		url:Path
+ * @return      Devuelve verdadero:Bool si el archivo es una imagen válida
+ *
+ */
+if(!function_exists('imagen_url')){
+	function imagen_url($url){
 		return (preg_match('/(png|jpg|gif)$/', pathinfo($url, PATHINFO_EXTENSION))) ? true : false;
 	}
 }
 
-if(!function_exists('image_valid')){
-	function image_valid($file){
-		return (file_exists($file)) ? true : false;
+/**
+ *
+ * Verifica que un archivo exista en el servidor en base a su ruta
+ *
+ * @param		archivo:Path
+ * @return      Devuelve verdadero:Bool si el archivo existe en el servidor
+ *
+ */
+if(!function_exists('imagen_existe')){
+	function imagen_existe($archivo){
+		return (file_exists(getcwd().$archivo)) ? true : false;
 	}
 }
 
-if(!function_exists('listio_acciones')){
-	function listio_acciones($accion){
-		return (in_array($accion, array('ver', 'detalle', 'editar', 'agregar', 'guardar', 'mostrar', 'ocultar', 'leido', 'noleido', 'copiar', 'mover', 'eliminar'))) ? $accion : false;
+/**
+ *
+ * Comprueba que una opción exista dentro de un arreglo de opciones
+ *
+ * @param		opcion:String, arreglo:Array
+ * @return      Devuelve verdadero:Bool si la opción existe dentro del arreglo
+ *
+ */
+if(!function_exists('menu_existe')){
+	function menu_existe($opcion, $arreglo){
+		return (in_array($opcion, $arreglo)) ? true : false;
 	}
 }
 
-if(!function_exists('listio_anuncios')){
-	function listio_anuncios($categoria){
-		return (in_array($categoria, array('publicados', 'destacados', 'pendientes', 'vencidos'))) ? $categoria : 'publicados';
+/**
+ *
+ * Valida que una opción exista dentro de un arreglo de opciones
+ *
+ * @param		opcion:String, arreglo:Array
+ * @return      Devuelve el valor de la opción:String si la opción existe
+ *
+ */
+if(!function_exists('menu_opcion')){
+	function menu_opcion($opcion, $arreglo){
+		return (in_array($opcion, $arreglo)) ? $opcion : false;
 	}
 }
 
-if(!function_exists('listio_catalogos')){
-	function listio_catalogos($parametro){
-		return (in_array($parametro, array('categoria', 'tipo', 'operacion', 'venta'))) ? $parametro : null;
+/**
+ *
+ * Verifica si un número es igual a cero y si es así devuelve nulo
+ *
+ * @param		numero:Integer
+ * @return      Devuelve nulo:Null si es igual a cero, si no devuelve el número
+ *
+ */
+if(!function_exists('numero_nulo')){
+	function numero_nulo($numero){
+		return (intval($numero) == 0) ? null : $numero;
 	}
 }
 
-if(!function_exists('listio_categoria')){
-	function listio_categoria($name){
-		return (in_array($name, array('residencial', 'comercial', 'campo', 'vacacional'))) ? $name : 'residencial';
+/**
+ *
+ * Verifica si un registro existe en la base de datos
+ *
+ * @param		total:Integer
+ * @return      Devuelve true:Bool si el registro existe en la base de datos
+ *
+ */
+if(!function_exists('mysql_existe')){
+	function mysql_existe($total){
+		return (intval($total) > 0) ? true : false;
 	}
 }
 
-if(!function_exists('listio_conservacion')){
-	function listio_conservacion($name){
-		return (in_array($name, array('nuevo','excelente','bueno','regular','malo'))) ? $name : null;
-	}
-}
-
-if(!function_exists('listio_estado')){
-	function listio_estado($estado){
-		return (in_array($estado, array('aprobacion','publicado','republicado','finalizado','inactivo','reportado','eliminado'))) ? $estado : null;
-	}
-}
-
-if(!function_exists('listio_etiquetas')){
-	function listio_etiquetas($text){
-		$etiquetas = '';
-		foreach(str_word_count($text, 1) as $palabra){
-			if(strlen($palabra) > 3){
-				if(!in_array(strtolower($palabra), array('abierto', 'blancos', 'completo', 'cuenta', 'esta', 'este', 'esto', 'método', 'para', 'planta', 'visitas'))){
-					$etiquetas .= strtolower($palabra).', ';
-				}
-			}
-		}
-		return rtrim($etiquetas, ', ');
-	}
-}
-
-if(!function_exists('listio_forma')){
-	function listio_forma($name){
-		return (in_array($name, array('regular','irregular','plano'))) ? $name : null;
-	}
-}
-
-if(!function_exists('listio_inmueble')){
-	function listio_inmueble($name){
-		return (in_array($name, array('casa', 'departamento', 'habitacion', 'terreno', 'lote', 'bodega', 'nave', 'local', 'oficina', 'finca', 'granja', 'hacienda', 'huerta', 'rancho', 'bungalow', 'cabaña', 'quinta', 'villa', 'desarrollo', 'edificio', 'hotel', 'salon'))) ? $name : 'casa';
-	}
-}
-
-if(!function_exists('listio_operacion')){
-	function listio_operacion($name){
-		return (in_array($name, array('venta', 'renta', 'traspaso'))) ? $name : 'venta';
-	}
-}
-
-if(!function_exists('listio_select_conservacion')){
-	function listio_select_conservacion(){
-		return array('excelente' => 'Excelente', 'buena' => 'Bueno', 'regular' => 'Regular', 'mala' => 'Malo');
-	}
-}
-
-if(!function_exists('listio_select_inmueble')){
-	function listio_select_inmueble(){
-		return array('bodega' => 'Bodega', 'bungalow' => 'Bungalow', 'cabaña' => 'Cabaña', 'casa' => 'Casa', 'departamento' => 'Departamento', 'desarrollo' => 'Desarrollo', 'edificio' => 'Edificio', 'finca' => 'Finca', 'granja' => 'Granja', 'habitacion' => 'Habitación', 'hacienda' => 'Hacienda', 'hotel' => 'Hotel', 'huerta' => 'Huerta', 'local' => 'Local', 'lote' => 'Lote', 'nave' => 'Nave', 'oficina' => 'Oficina', 'rancho' => 'Rancho', 'salon' => 'Salón', 'terreno' => 'Terreno', 'quinta' => 'Quinta', 'villa' => 'Villa');
-	}
-}
-
-if(!function_exists('listio_select_moneda')){
-	function listio_select_moneda(){
-		return array('MXN' => 'MXN', 'USD' => 'USD');
-	}
-}
-
-if(!function_exists('listio_select_operacion')){
-	function listio_select_operacion(){
-		return array('venta' => 'Venta', 'renta' => 'Renta', 'traspaso' => 'Traspaso');
-	}
-}
-
-if(!function_exists('listio_select_terreno')){
-	function listio_select_terreno(){
-		return array('regular' => 'Regular', 'irregular' => 'Irregular', 'plano' => 'Plano');
-	}
-}
-
-if(!function_exists('listio_select_tipo')){
-	function listio_select_tipo($inmueble){
-		switch ($inmueble) {
-			case 'bodega':
-				return array('comercial' => 'Comercial', 'industrial' => 'Industrial');
-				break;
-			case 'bungalow':
-				return array();
-				break;
-			case 'cabaña':
-				return array();
-				break;
-			case 'casa':
-				return array('solo' => 'Sola', 'interes-social' => 'De interés social', 'residencial' => 'Residencial', 'condominio' => 'En condominio', 'comercial' => 'Para uso comercial', 'vacacional' => 'Vacacional');
-				break;
-			case 'departamento':
-				return array('solo' => 'Solo', 'interes-social' => 'De interés social', 'residencial' => 'Residencial', 'condominio' => 'En condominio', 'vacacional' => 'Vacacional');
-				break;
-			case 'desarrollo':
-				return array();
-				break;
-			case 'edificio':
-				return array();
-				break;
-			case 'finca':
-				return array();
-				break;
-			case 'granja':
-				return array();
-				break;
-			case 'habitacion':
-				return array('independiente' => 'Independiente', 'compartido' => 'Compartida');
-				break;
-			case 'hacienda':
-				return array();
-				break;
-			case 'hotel':
-				return array();
-				break;
-			case 'huerta':
-				return array();
-				break;
-			case 'local':
-				return array('comercial' => 'Comercial', 'centro-comercial' => 'En centro comercial');
-				break;
-			case 'lote':
-				return array();
-				break;
-			case 'nave':
-				return array('industrial' => 'Industrial', 'parque' => 'En parque industrial');
-				break;
-			case 'oficina':
-				return array('comercial' => 'Comercial', 'centro-comercial' => 'En centro comercial');
-				break;
-			case 'rancho':
-				return array();
-				break;
-			case 'salon':
-				return array();
-				break;
-			case 'terreno':
-				return array('residencial' => 'Residencial', 'comercial' => 'Para uso comercial', 'industrial' => 'Para uso industrial');
-				break;
-			case 'quinta':
-				return array();
-				break;
-			case 'villa':
-				return array();
-				break;
-		}
-	}
-}
-
-if(!function_exists('listio_select_vacacional')){
-	function listio_select_vacacional($inmueble){
-		switch ($inmueble) {
-			case 'bodega':
-				return array();
-				break;
-			case 'bungalow':
-				return array('campo' => 'Campo', 'montaña' => 'Montaña', 'playa' => 'Playa', 'suburbios' => 'Suburbios', 'bosque' => 'Bosque');
-				break;
-			case 'cabaña':
-				return array('campo' => 'Campo', 'montaña' => 'Montaña', 'playa' => 'Playa', 'suburbios' => 'Suburbios', 'bosque' => 'Bosque');
-				break;
-			case 'casa':
-				return array('campo' => 'Campo', 'ciudad' => 'Ciudad', 'montaña' => 'Montaña', 'playa' => 'Playa', 'suburbios' => 'Suburbios', 'bosque' => 'Bosque');
-				break;
-			case 'departamento':
-				return array('ciudad' => 'Ciudad', 'playa' => 'Playa', 'suburbios' => 'Suburbios');
-				break;
-			case 'desarrollo':
-				return array();
-				break;
-			case 'edificio':
-				return array();
-				break;
-			case 'finca':
-				return array();
-				break;
-			case 'granja':
-				return array();
-				break;
-			case 'habitacion':
-				return array();
-				break;
-			case 'hacienda':
-				return array();
-				break;
-			case 'hotel':
-				return array();
-				break;
-			case 'huerta':
-				return array();
-				break;
-			case 'local':
-				return array();
-				break;
-			case 'lote':
-				return array();
-				break;
-			case 'nave':
-				return array();
-				break;
-			case 'oficina':
-				return array();
-				break;
-			case 'rancho':
-				return array();
-				break;
-			case 'salon':
-				return array();
-				break;
-			case 'terreno':
-				return array();
-				break;
-			case 'quinta':
-				return array('campo' => 'Campo', 'ciudad' => 'Ciudad', 'montaña' => 'Montaña', 'playa' => 'Playa', 'suburbios' => 'Suburbios', 'bosque' => 'Bosque');
-				break;
-			case 'villa':
-				return array('campo' => 'Campo', 'ciudad' => 'Ciudad', 'montaña' => 'Montaña', 'playa' => 'Playa', 'suburbios' => 'Suburbios', 'bosque' => 'Bosque');
-				break;
-		}
-	}
-}
-
-if(!function_exists('listio_select_venta')){
-	function listio_select_venta(){
-		return array('preventa' => 'Preventa', 'remate' => 'Remate', 'oportunidad' => 'Oportunidad');
-	}
-}
-
-if(!function_exists('listio_tipo')){
-	function listio_tipo($name){
-		return (in_array($name, array('solo', 'interes-social', 'residencial', 'condominio', 'comercial', 'vacacional', 'independiente', 'compartido', 'industrial', 'parque', 'centro-comercial'))) ? $name : 'residencial';
-	}
-}
-
-if(!function_exists('listio_ubicaciones')){
-	function listio_ubicaciones($tipo){
-		return (in_array($tipo, array('paises','provincias','municipios','lugares'))) ? $tipo : null;
-	}
-}
-
-if(!function_exists('listio_vacacional')){
-	function listio_vacacional($name){
-		return (in_array($name, array('campo', 'ciudad', 'montaña', 'playa', 'suburbios', 'bosque'))) ? $name : null;
-	}
-}
-
-if(!function_exists('listio_venta')){
-	function listio_venta($name){
-		return (in_array($name, array('preventa', 'remate', 'oportunidad'))) ? $name : null;
-	}
-}
-
-if(!function_exists('numerico_nulo')){
-	function numerico_nulo($val){
-		return (intval($val) == 0) ? null : $val;
-	}
-}
-
-if(!function_exists('mysql_exists')){
-	function mysql_exists($count){
-		return (intval($count) > 0) ? true : false;
-	}
-}
-
+/**
+ *
+ * Verifica si un valor es nulo en la base de datos, tomando en cuenta si su
+ * valor es nulo, espacio en blanco o no definido
+ *
+ * @param		valor:String
+ * @return      Devuelve nulo:Null si el registro es nulo, si no regresa el valor
+ *
+ */
 if(!function_exists('mysql_nulo')){
-	function mysql_nulo($val){
-		return ($val === null or trim($val) === '' or !isset($val)) ? null : $val;
+	function mysql_nulo($valor){
+		return ($valor === null or trim($valor) === '' or !isset($valor)) ? null : $valor;
 	}
 }
 
+/**
+ *
+ * Convierte un objecto en formato de arreglo, conservando la misma estructura
+ *
+ * @param		objecto:Object
+ * @return      Devuelve el objeto en un arreglo:Array
+ *
+ */
 if(!function_exists('objeto_a_arreglo')){
-	function objeto_a_arreglo($object){
-		if (is_object($object)) {
-	        $object = get_object_vars($object);
-	    }
-	    if (is_array($object)) {
-	        return array_map(__FUNCTION__, $object);
-	    } else {
-	        return $object;
-	    }
+	function objeto_a_arreglo($objeto){
+		if(is_object($objeto)){ $objeto = get_object_vars($objeto); }
+	    return (is_array($objeto)) ? array_map(__FUNCTION__, $objeto) : $objeto;
 	}
 }
 
-if(!function_exists('encriptar')){
-	function encriptar($password, $hash = 'sha512'){
-		return do_hash(SEMILLA.$password, $hash);
+/**
+ *
+ * Verifica que la foto especificada para un usuario desde la base de datos se
+ * encuentre físicamente en el servidor, si no está pone la ruta de la foto por
+ * defecto, esta ruta por defecto se encuentra en las constantes globales de CI
+ *
+ * @param		foto:Path
+ * @return      Devuelve la foto del usuario:Path si existe o la foto por defecto
+ *
+ */
+if(!function_exists('perfil_foto')){
+	function perfil_foto($foto){
+		return (file_exists(getcwd().$foto)) ? $foto : USUARIO;
 	}
 }
 
-if(!function_exists('validar_contrasena')){
-	/*
-	Contraseña de al menos 8 caracteres, al menos 1 letra minúscula, al menos 1
-	letra mayúscula y al menos 1 número
-	*/
-	function validar_contrasena($password){
-		return (preg_match('/[^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$]/', $password)) ? true : false;
-	}
-}
-
+/**
+ *
+ * Genera una clave numérica de 10 dígitos de acuerdo el microtiempo que puede
+ * servir como unique id
+ *
+ * @param
+ * @return      Devuelve una clave numérica:Integer única de 10 dígitos
+ *
+ */
 if(!function_exists('seo_key')){
 	function seo_key(){
 		return substr(explode(' ', microtime())[1], -5) . substr(explode(' ', explode('.', microtime())[1] )[0], 0, 5);
 	}
 }
 
+/**
+ *
+ * Genera una clave alfanumérica de longitud 13 con la función nativa de php uniqid,
+ * si bien es más confiable por usar letras es más lenta que la función seo_key
+ *
+ * @param
+ * @return      Devuelve una clave alfanumérica:String única de 13 dígitos
+ *
+ */
 if(!function_exists('seo_uniqueid')){
 	function seo_uniqueid(){
 		return uniqid();
 	}
 }
 
-if(!function_exists('session_exists')){
-	function session_exists(){
+/**
+ *
+ * Comprueba que una sesión de usuario exista
+ *
+ * @param
+ * @return      Devuelve verdadero:Bool si la sesión existe, si no falso:Bool
+ *
+ */
+if(!function_exists('sesion_existe')){
+	function sesion_existe(){
 		return ($this->session->userdata('session_id')) ? true: false;
 	}
 }
 
-if(!function_exists('session_welcome')){
-	function session_welcome($category){
-		switch ($category){
-			case 'usuario':
-				return '/panel';
-				break;
-			case 'editor':
-				return '/admin';
-				break;
-			case 'administrador':
-				return '/admin';
-				break;
-			default:
-				return '/panel';
-				break;
-		}
+/**
+ *
+ * Crea una sesión de usuario con los datos enviados por parámetro
+ *
+ * @param		datos:Dictionary
+ * @return      Devuelve verdadero:Bool si la sesión se crea, si no falso:Bool
+ *
+ */
+if(!function_exists('sesion_crear')){
+	function sesion_crear($datos){
+		return ($this->session->set_userdata($datos)) ? true: false;
 	}
 }
 
-if(!function_exists('session_create')){
-	function session_create($array){
-		return ($this->session->set_userdata($array)) ? true: false;
+/**
+ *
+ * Comprueba si un texto o variable están declarados pero vacíos
+ *
+ * @param		texto:String
+ * @return      Devuelve verdadero:Bool si el texto está vacío o en blanco
+ *
+ */
+if(!function_exists('texto_nulo')){
+	function texto_nulo($texto){
+		return (!isset($texto) || trim($texto) === '');
 	}
 }
 
-if(!function_exists('session_destroy')){
-	function session_destroy(){
-		return ($this->session->unset_userdata(array('id' => null, 'usuario' => null, 'nombre' => null, 'apellidos' => null, 'correo' => null, 'ubicacion' => null, 'municipio' => null, 'provincia' => null, 'pais' => null, 'categoria' => null, 'estado' => null, 'nivel' => null, 'redirect' => null)) && $this->session->sess_destroy()) ? true: false;
-	}
-}
-
-if(!function_exists('text_null')){
-	function text_null($text){
-		return (!isset($text) || trim($text) === '');
-	}
-}
-
-if(!function_exists('limpiar')){
-	function limpiar($texto){
+/**
+ *
+ * Sanitiza el texto especificado, remueve espacios innecesarios, etiquetas html,
+ * caracteres especiales, tabulaciones, saltos de línea, etc.
+ *
+ * @param		texto:String
+ * @return      Devuelve el texto:String sanitizado
+ *
+ */
+if(!function_exists('texto_limpiar')){
+	function texto_limpiar($texto){
 		$texto = strip_tags($texto);
 		$texto = htmlspecialchars($texto, ENT_QUOTES);
 		$texto = trim($texto);
@@ -476,15 +321,48 @@ if(!function_exists('limpiar')){
 	}
 }
 
-if(!function_exists('url_exists')){
-	function url_exists($url){
-		if (!$fp = curl_init($url)) return false;
-		return true;
+/**
+ *
+ * Convierte un título en una cadena seo para las urls, remueve acentos y caracteres
+ * especiales, convierte a minúsculas y reemplaza los espacios por guiones medios
+ *
+ * @param		titulo:String
+ * @return      Devuelve una url:String válida para navegación web
+ *
+ */
+if(!function_exists('url_generar')){
+	function url_generar($texto){
+		return url_title(preg_replace('/[^a-z0-9[:space:]]/', '', trim(convert_accented_characters(mb_strtolower($texto, 'UTF-8')))));
 	}
 }
 
-if(!function_exists('url_valid')){
-	function url_valid($url){
+/**
+ *
+ * Comprueba vía http que una url (http://dominio.abc) realmente exista
+ *
+ * @param		url:Url
+ * @return      Devuelve verdadero:Bool si la url existe físicamente
+ *
+ */
+if(!function_exists('url_existe')){
+	function url_existe($url){
+		$http = @get_headers($url);
+		return (!$http || $http[0] == 'HTTP/1.1 404 Not Found') ? false: true;
+	}
+}
+
+/**
+ *
+ * Verifica si un texto especificado como url es válido, comprueba que en la cadena
+ * no existan mayúsculas, etiquetas html, caracteres especiales, tabulaciones,
+ * saltos de línea o espacios innecesarios en el texto, si existen los cambia
+ *
+ * @param		url:String
+ * @return      Devuelve la url:String sanitizada
+ *
+ */
+if(!function_exists('url_valida')){
+	function url_valida($url){
 		$url = strtolower($url);
 		$url = strip_tags($url);
 		$url = htmlspecialchars($url, ENT_QUOTES);
@@ -492,11 +370,5 @@ if(!function_exists('url_valid')){
 		$url = preg_replace('[\n|\r|\n\r]', '', $url);
 		$url = preg_replace('/[^a-z0-9\-_]/', '', $url);
 		return mb_convert_encoding($url, 'UTF-8');
-	}
-}
-
-if(!function_exists('perfil_foto')){
-	function perfil_foto($foto){
-		return (file_exists(getcwd().$foto)) ? $foto : USUARIO;
 	}
 }

@@ -19,9 +19,9 @@ class Sesion extends CI_Controller {
 
 	public function login(){
 		try {
-			$usuario 	= limpiar(xss_clean($this->input->post('usuario')));
-			$contrasena = encriptar(xss_clean($this->input->post('contrasena')));
-			if(correo($usuario) && !empty($this->input->post('contrasena'))){
+			$usuario 	= texto_limpiar(xss_clean($this->input->post('usuario')));
+			$contrasena = contrasena_encriptar(xss_clean($this->input->post('contrasena')));
+			if(correo_valido($usuario) && !empty($this->input->post('contrasena'))){
 				try {
 					$this->load->model('sesiones');
 					$response = $this->sesiones->login($usuario, $contrasena);
